@@ -13,7 +13,7 @@ platmon과 platmon-hub의 한국어 프로젝트 소개 페이지입니다.
 python3 -m http.server 8080 --bind 127.0.0.1
 ```
 
-저장소 디렉터리에서 실행하고 http://127.0.0.1:8080 을 엽니다. GitHub Pages는 `main` 브랜치의 루트(`/`)를 게시 소스로 사용하도록 준비했습니다. `.nojekyll`로 정적 파일을 그대로 제공합니다. 현재 저장소가 비공개이며 GitHub 요금제 제한으로 Pages 활성화는 완료되지 않았습니다.
+저장소 디렉터리에서 실행하고 http://127.0.0.1:8080 을 엽니다. GitHub Pages는 `main` 브랜치의 루트(`/`)를 게시 소스로 사용하도록 준비했습니다. `.nojekyll`로 정적 파일을 그대로 제공합니다. 저장소는 공개이며 GitHub Pages가 활성화되어 있습니다. `main`에 푸시하면 자동으로 배포됩니다. 사이트 주소: https://platmon.github.io/
 
 ## 언어
 
