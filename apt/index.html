@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>platmon APT repository</title>
+<meta name="description" content="Signed APT repository for the platmon Debian package.">
+<link rel="icon" href="../assets/favicon.svg">
+<style>
+:root { --bg: #ffffff; --fg: #1d2127; --muted: #5b6470; --code: #f2f4f7; --line: #dde1e6; --link: #0b62c4; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #111418; --fg: #e8eaed; --muted: #a3abb6; --code: #1c2127; --line: #2c333b; --link: #6cb0ff; }
+}
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, sans-serif; }
+main { max-width: 46rem; margin: 0 auto; padding: 2rem 16px 3rem; }
+h1 { font-size: 1.6rem; margin: 0 0 .5rem; }
+h2 { font-size: 1.1rem; margin: 2rem 0 .5rem; }
+p, li { color: var(--muted); }
+a { color: var(--link); }
+pre, code { font: .9rem/1.5 ui-monospace, monospace; }
+pre { background: var(--code); border: 1px solid var(--line); border-radius: 6px; padding: .75rem 1rem; overflow-x: auto; color: var(--fg); }
+code.fpr { overflow-wrap: anywhere; color: var(--fg); }
+</style>
+</head>
+<body>
+<main>
+<h1>platmon APT repository</h1>
+<p>Signed APT repository for the <a href="https://github.com/platmon/platmon">platmon</a> Debian package. It holds the same <code>.deb</code> files as the <a href="https://github.com/platmon/platmon/releases">GitHub releases</a>; platmon-hub is installed from PyPI.</p>
+
+<h2>Install</h2>
+<pre>sudo install -d -m 0755 /etc/apt/keyrings
+curl -fsSL https://platmon.github.io/apt/platmon-archive-keyring.gpg \
+  | sudo tee /etc/apt/keyrings/platmon.gpg &gt; /dev/null
+gpg --show-keys /etc/apt/keyrings/platmon.gpg
+sudo tee /etc/apt/sources.list.d/platmon.sources &gt; /dev/null &lt;&lt;'EOF'
+Types: deb
+URIs: https://platmon.github.io/apt
+Suites: stable
+Components: main
+Signed-By: /etc/apt/keyrings/platmon.gpg
+EOF
+sudo apt update
+sudo apt install platmon</pre>
+
+<h2>Signing key</h2>
+<p>Check that <code>gpg --show-keys</code> prints this fingerprint before running <code>apt update</code>:</p>
+<p><code class="fpr">6D42 C14A BFB9 412F 34BA 4BEF F38B 9BB5 26A3 B0C6</code></p>
+<p>Ed25519, created 2026-10-18, expires 2028-10-17. Also available as <a href="platmon-archive-keyring.asc">ASCII armor</a>.</p>
+
+<p>Upgrades, rollback with <code>apt install platmon=&lt;version&gt;</code> and configuration handling are described in the <a href="https://github.com/platmon/platmon/blob/main/docs/reference/packaging.md">packaging guide</a>.</p>
+</main>
+</body>
+</html>
