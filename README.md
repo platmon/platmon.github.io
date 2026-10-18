@@ -15,6 +15,18 @@ python3 -m http.server 8080 --bind 127.0.0.1
 
 저장소 디렉터리에서 실행하고 http://127.0.0.1:8080 을 엽니다. GitHub Pages는 `main` 브랜치의 루트(`/`)를 게시 소스로 사용하도록 준비했습니다. `.nojekyll`로 정적 파일을 그대로 제공합니다. 저장소는 공개이며 GitHub Pages가 활성화되어 있습니다. `main`에 푸시하면 자동으로 배포됩니다. 사이트 주소: https://platmon.github.io/
 
+## APT 저장소
+
+`apt/`는 platmon `.deb`의 서명된 APT 저장소이며 https://platmon.github.io/apt 로 게시됩니다. 설치 방법은 [apt/index.html](apt/index.html)과 platmon 문서에 있습니다.
+
+- `apt/pool/`의 `.deb`는 platmon GitHub 릴리스의 파일 그대로입니다. 한 번 올린 파일은 교체하지 않습니다.
+- `apt/dists/stable/`의 인덱스는 `apt/tools/update.sh`가 다시 만들고 `InRelease`와 `Release.gpg`로 서명합니다. 손으로 고치지 않습니다.
+- 릴리스를 추가할 때는 [apt 워크플로](.github/workflows/apt.yml)를 수동 실행합니다(`gh workflow run apt -f tags=v1.4.0`). `apt` 환경의 승인 후에 서명 키를 읽습니다. 스크립트는 다음 조건을 모두 확인한 경우에만 `.deb`를 추가합니다.
+  - 게시된 릴리스(초안·사전 릴리스 아님)이고, 패키지 이름·버전·아키텍처가 태그와 맞습니다.
+  - 릴리스의 `SHA256SUMS`와 일치합니다.
+  - platmon 릴리스 워크플로가 그 태그로 만든 빌드 출처 증명(attestation)이 있습니다. 증명이 도입되기 전에 게시된 1.0.0-1부터 1.3.0-1까지는 대신 `apt/legacy-sha256.txt`의 해시와 일치해야 합니다.
+- 서명 키: `apt/platmon-archive-keyring.gpg`(`.asc`), 지문 `6D42 C14A BFB9 412F 34BA 4BEF F38B 9BB5 26A3 B0C6`, Ed25519, 2028-10-17 만료. 비밀키는 `apt` 환경 시크릿 `APT_SIGNING_KEY`와 소유자의 오프라인 백업에만 있습니다. 만료 전에 기한을 연장한 공개키를 다시 커밋하고, 사용자는 키링 파일을 다시 받습니다.
+
 ## 언어
 
 한국어·영어를 지원합니다. 기본 언어는 저장된 사용자 선택을 우선하고, 없으면 브라우저의 첫 번째 선호 언어가 한국어(`ko`, `ko-KR` 등)일 때 한국어, 그 외에는 영어를 사용합니다. 실제 위치나 IP는 조회하지 않습니다.
