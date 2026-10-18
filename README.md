@@ -4,6 +4,7 @@ platmon과 platmon-hub의 한국어 프로젝트 소개 페이지입니다.
 
 - `index.html`: 실제 소개 페이지
 - `styles.css`: 반응형 스타일
+- `copy.js`: 명령 블록의 복사 버튼 (홈과 `apt/index.html`)
 - `assets/`: 프로젝트의 공식 로고와 파비콘 (Apache-2.0)
 - `index.md`: 소개 문안 참고 자료
 

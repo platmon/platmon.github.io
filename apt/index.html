@@ -18,6 +18,10 @@ p, li { color: var(--muted); }
 a { color: var(--link); }
 pre, code { font: .9rem/1.5 ui-monospace, monospace; }
 pre { background: var(--code); border: 1px solid var(--line); border-radius: 6px; padding: .75rem 1rem; overflow-x: auto; color: var(--fg); }
+.command { position: relative; }
+.command pre { padding-right: 4.5rem; }
+.copy { position: absolute; top: .5rem; right: .5rem; font: 12px system-ui, sans-serif; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 3px 10px; cursor: pointer; }
+.copy:hover, .copy[data-state="copied"] { border-color: var(--link); color: var(--link); }
 code.fpr { overflow-wrap: anywhere; color: var(--fg); }
 </style>
 </head>
@@ -27,7 +31,7 @@ code.fpr { overflow-wrap: anywhere; color: var(--fg); }
 <p>Signed APT repository for the <a href="https://github.com/platmon/platmon">platmon</a> Debian package. It holds the same <code>.deb</code> files as the <a href="https://github.com/platmon/platmon/releases">GitHub releases</a>; platmon-hub is installed from PyPI.</p>
 
 <h2>Install</h2>
-<pre>sudo install -d -m 0755 /etc/apt/keyrings
+<pre><code>sudo install -d -m 0755 /etc/apt/keyrings
 curl -fsSL https://platmon.github.io/apt/platmon-archive-keyring.gpg \
   | sudo tee /etc/apt/keyrings/platmon.gpg &gt; /dev/null
 gpg --show-keys /etc/apt/keyrings/platmon.gpg
@@ -39,7 +43,7 @@ Components: main
 Signed-By: /etc/apt/keyrings/platmon.gpg
 EOF
 sudo apt update
-sudo apt install platmon</pre>
+sudo apt install platmon</code></pre>
 
 <h2>Signing key</h2>
 <p>Check that <code>gpg --show-keys</code> prints this fingerprint before running <code>apt update</code>:</p>
@@ -48,5 +52,6 @@ sudo apt install platmon</pre>
 
 <p>Upgrades, rollback with <code>apt install platmon=&lt;version&gt;</code> and configuration handling are described in the <a href="https://github.com/platmon/platmon/blob/main/docs/reference/packaging.md">packaging guide</a>.</p>
 </main>
+<script src="../copy.js"></script>
 </body>
 </html>
