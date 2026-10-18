@@ -38,6 +38,19 @@ platmon-hub는 독립적으로 실행되는 Agent의 정보를 모아 여러 장
 
 [설계 문서](https://github.com/platmon/platmon/blob/main/docs/development/architecture.md) · [성능 측정 기록](https://github.com/platmon/platmon/blob/main/docs/performance/README.md)
 
+## 설치
+
+Agent는 서명된 APT 저장소에서 설치합니다. Jetson과 Raspberry Pi OS를 포함한 Ubuntu, Debian 계열에서 사용하며, Python 3.9 이상과 systemd가 필요합니다. `apt update` 전에 키 지문이 `6D42 C14A BFB9 412F 34BA 4BEF F38B 9BB5 26A3 B0C6`인지 확인하세요. 명령은 [APT 저장소](https://platmon.github.io/apt/) 페이지에 있습니다. `sudo apt update && sudo apt upgrade`로 업데이트하고, `sudo apt install platmon=<버전>`으로 이전 버전으로 되돌릴 수 있습니다.
+
+Hub는 PyPI에서 설치합니다. Python 3.9 이상과 pipx가 필요합니다.
+
+```sh
+pipx install platmon-hub
+platmon-hub --version
+```
+
+`pipx upgrade platmon-hub`로 업데이트합니다. 서비스 실행과 기록을 유지하는 업그레이드는 [설치와 운영](https://github.com/platmon/platmon-hub/blob/main/docs/guides/operations.md) 안내를 따르세요.
+
 ## 시작하기
 
 1. 모니터링할 Linux 장치에 [platmon을 설치](https://github.com/platmon/platmon/blob/main/docs/guides/getting-started.md)합니다.
