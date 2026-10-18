@@ -1,0 +1,36 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: all amd64 arm64 armhf
+Codename: stable
+Components: main
+Date: Sun, 18 Oct 2026 07:40:02 +0000
+Description: platmon packages from GitHub releases
+Label: platmon
+Origin: platmon
+Suite: stable
+SHA256:
+ d207c5bbc59d01efc5e3dc12b553de85dff235678f0e7491288a3429ab36fe93             3755 main/binary-all/Packages
+ f354365c83e6976ac763565a31c40a35336dcfc159ee3ca61cc42724a1c08221             1111 main/binary-all/Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 main/binary-amd64/Packages
+ f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec               20 main/binary-amd64/Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 main/binary-arm64/Packages
+ f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec               20 main/binary-arm64/Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 main/binary-armhf/Packages
+ f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec               20 main/binary-armhf/Packages.gz
+SHA512:
+ a981d5b280c37e26c4dd25f77e095e1eb82907ebda65970a037fdda6b6afeb64ad04f24f46ab2b610c60326a39c7061f40055e3700739a7fbe5d33c7603a310a             3755 main/binary-all/Packages
+ 98dbe48514fbdcaa8239e88e471581ca807957193c305c7747c27c58c00c0fdacf67359d4c7d3a6ca3de7a509b909d2a2a041e243d9462f944068ea0e6d4fcd1             1111 main/binary-all/Packages.gz
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 main/binary-amd64/Packages
+ 1b46b9b08d5b338be9d732a1724795b2eab63daffde377218727c90857b79fe6a47bceed495117fcde60f7339812ef75ef4c69f82dd79fb69b6cbf8006b521f2               20 main/binary-amd64/Packages.gz
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 main/binary-arm64/Packages
+ 1b46b9b08d5b338be9d732a1724795b2eab63daffde377218727c90857b79fe6a47bceed495117fcde60f7339812ef75ef4c69f82dd79fb69b6cbf8006b521f2               20 main/binary-arm64/Packages.gz
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 main/binary-armhf/Packages
+ 1b46b9b08d5b338be9d732a1724795b2eab63daffde377218727c90857b79fe6a47bceed495117fcde60f7339812ef75ef4c69f82dd79fb69b6cbf8006b521f2               20 main/binary-armhf/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQRtQsFKv7lBLzS6S+/zi5u1JqOwxgUCatR30gAKCRDzi5u1JqOw
+xq62AP9xHcv449Uby71zp4S2xkNpZ0f2mbR3JMXarTu2cPF0pwEAq/3i5qVU8emr
+k8yo6z0BHXjMP6J8BVyVk2zWZ4y+vwQ=
+=0o63
+-----END PGP SIGNATURE-----
