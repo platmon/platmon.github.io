@@ -4,9 +4,11 @@
 #   apt/tools/update.sh [--unsigned] [TAG...]
 #
 # Each TAG must be a published (not draft, not pre-release) GitHub release of
-# platmon/platmon. Its .deb must match the release's SHA256SUMS and either carry
-# a build provenance attestation from the release workflow for that tag, or be
-# listed in apt/legacy-sha256.txt (releases made before attestations existed).
+# platmon/platmon, with either one Architecture: all .deb (1.3.0 and earlier) or
+# one .deb for each of amd64 and arm64 (from 1.4.0). Each .deb must match the
+# release's SHA256SUMS and either carry a build provenance attestation from the
+# release workflow for that tag, or be listed in apt/legacy-sha256.txt (releases
+# made before attestations existed).
 # A file already in the pool is never replaced.
 #
 # Without --unsigned, the secret key of apt/platmon-archive-keyring.gpg must be
@@ -36,7 +38,7 @@ fail() {
 }
 
 add_release() {
-    local tag=$1 expected dir deb name sum unpublished
+    local tag=$1 expected dir found unpublished
     if [[ $tag =~ ^v([0-9]+\.[0-9]+\.[0-9]+)(-([1-9][0-9]*))?$ ]]; then
         expected=${BASH_REMATCH[1]}-${BASH_REMATCH[3]:-1}
     else
@@ -47,16 +49,28 @@ add_release() {
     [ "$unpublished" = false ] || fail "$tag is a draft or pre-release"
 
     dir=$work/$tag
-    gh release download "$tag" -R "$repo" -D "$dir" -p '*_all.deb' -p SHA256SUMS
-    deb=$(find "$dir" -name 'platmon_*_all.deb')
-    [ "$(printf '%s\n' "$deb" | wc -l)" -eq 1 ] || fail "$tag must have exactly one platmon .deb"
-    name=${deb##*/}
-    [ "$name" = "platmon_${expected}_all.deb" ] || fail "$tag has $name, expected platmon_${expected}_all.deb"
+    gh release download "$tag" -R "$repo" -D "$dir" -p '*.deb' -p SHA256SUMS
+    found=$(cd "$dir" && find . -maxdepth 1 -name '*.deb' -printf '%f\n' | sort | tr '\n' ' ')
+    if [ "$found" = "platmon_${expected}_all.deb " ]; then
+        add_deb "$tag" "$dir" all
+    elif [ "$found" = "platmon_${expected}_amd64.deb platmon_${expected}_arm64.deb " ]; then
+        add_deb "$tag" "$dir" amd64
+        add_deb "$tag" "$dir" arm64
+    else
+        fail "$tag has [${found% }]; expected platmon_${expected}_all.deb, or _amd64.deb and _arm64.deb"
+    fi
+}
+
+# The release's .deb for one architecture; $expected is the caller's version.
+add_deb() {
+    local tag=$1 dir=$2 arch=$3 deb name sum
+    name=platmon_${expected}_$arch.deb
+    deb=$dir/$name
     grep -q "  $name\$" "$dir/SHA256SUMS" || fail "$name is not in $tag's SHA256SUMS"
     (cd "$dir" && grep "  $name\$" SHA256SUMS | sha256sum -c --strict --quiet -) || fail "$name does not match SHA256SUMS"
     [ "$(dpkg-deb -f "$deb" Package)" = platmon ] || fail "$name is not the platmon package"
     [ "$(dpkg-deb -f "$deb" Version)" = "$expected" ] || fail "$name has the wrong package version"
-    [ "$(dpkg-deb -f "$deb" Architecture)" = all ] || fail "$name is not Architecture: all"
+    [ "$(dpkg-deb -f "$deb" Architecture)" = "$arch" ] || fail "$name is not Architecture: $arch"
 
     sum=$(sha256sum "$deb" | cut -d' ' -f1)
     if grep -qx "$sum  $name" "$root/legacy-sha256.txt"; then
@@ -82,19 +96,18 @@ for tag in "$@"; do
     add_release "$tag"
 done
 
-# Regenerate the index from the pool. Every package is Architecture: all, so the
-# per-architecture indexes are empty and APT reads binary-all on every host.
+# Regenerate the index from the pool. Each architecture's index lists its own
+# packages and the Architecture: all ones (Debian's layout; an armhf host sees
+# only the latter, 1.3.0 and earlier); binary-all lists the Architecture: all ones.
 cd "$root"
 dist=dists/$suite
 rm -rf "$dist"
-for arch in $arches; do
-    mkdir -p "$dist/main/binary-$arch"
-    : > "$dist/main/binary-$arch/Packages"
-done
 # APT verifies with SHA256; MD5 and SHA1 are left out of both indexes.
 hashes=(-o APT::FTPArchive::MD5=false -o APT::FTPArchive::SHA1=false)
-apt-ftparchive "${hashes[@]}" packages pool > "$dist/main/binary-all/Packages"
 for arch in $arches; do
+    mkdir -p "$dist/main/binary-$arch"
+    # -a ARCH takes the pool's _ARCH.deb and _all.deb files.
+    apt-ftparchive "${hashes[@]}" -a "$arch" packages pool > "$dist/main/binary-$arch/Packages"
     gzip -9 -n -k "$dist/main/binary-$arch/Packages"
 done
 apt-ftparchive "${hashes[@]}" \
@@ -117,4 +130,6 @@ if [ "$sign" = 1 ]; then
     gpgv --keyring "$keyring" "$dist/InRelease"
     gpgv --keyring "$keyring" "$dist/Release.gpg" "$dist/Release"
 fi
-echo "index: $(grep -c '^Package:' "$dist/main/binary-all/Packages") package versions in $dist"
+for arch in $arches; do
+    echo "index $arch: $(grep -c '^Package:' "$dist/main/binary-$arch/Packages" || true) package versions"
+done
