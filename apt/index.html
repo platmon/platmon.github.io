@@ -35,11 +35,12 @@ code.fpr { overflow-wrap: anywhere; color: var(--fg); }
 curl -fsSL https://platmon.github.io/apt/platmon-archive-keyring.gpg \
   | sudo tee /etc/apt/keyrings/platmon.gpg &gt; /dev/null
 gpg --show-keys /etc/apt/keyrings/platmon.gpg
-sudo tee /etc/apt/sources.list.d/platmon.sources &gt; /dev/null &lt;&lt;'EOF'
+sudo tee /etc/apt/sources.list.d/platmon.sources &gt; /dev/null &lt;&lt;EOF
 Types: deb
 URIs: https://platmon.github.io/apt
 Suites: stable
 Components: main
+Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/platmon.gpg
 EOF
 sudo apt update
