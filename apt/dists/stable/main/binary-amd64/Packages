@@ -1,0 +1,102 @@
+Package: platmon
+Architecture: all
+Version: 1.0.0-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 307
+Depends: python3 (>= 3.9), systemd, init-system-helpers (>= 1.56)
+Filename: pool/main/p/platmon/platmon_1.0.0-1_all.deb
+Size: 75800
+SHA256: 95752d0dd1d954197521318aebaa8ae5008db6e43d4ff06ee4381baae0c69c76
+SHA512: 3d54e93dc1848818b16b95bedf00c7ab94deb45eca5d5003b51686d5698d86bcfabeb86818c8ba078db999ce9a4f980737c8d136a954d503bb8c3dc760af7841
+Homepage: https://github.com/jwsung91/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics using the Python standard library and exposes
+ an HTTP API, web viewer and standalone terminal client.
+
+Package: platmon
+Architecture: all
+Version: 1.1.0-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 376
+Depends: python3 (>= 3.9), systemd, init-system-helpers (>= 1.56)
+Filename: pool/main/p/platmon/platmon_1.1.0-1_all.deb
+Size: 86464
+SHA256: 73a44e3dd6681d2f8d65f3c3bca48d1e03f2aef5dc02c2d1da851f6f2e4c3999
+SHA512: 8fc99688d0ef87905ab96fd159505403f716540b7bc83ff01f8aca0d3405675b1872329b21e96aac5697328ed88da2ebf78e7e1fd6ff1bb484e9c85aec7fdec4
+Homepage: https://github.com/jwsung91/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics using the Python standard library and exposes
+ an HTTP API, web viewer and standalone terminal client.
+
+Package: platmon
+Architecture: all
+Version: 1.2.0-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 402
+Depends: python3 (>= 3.9), systemd, init-system-helpers (>= 1.56)
+Filename: pool/main/p/platmon/platmon_1.2.0-1_all.deb
+Size: 91492
+SHA256: 5df127c7846de17e0540deef3090abbf5e526e1403bff189b8491feb5de18f06
+SHA512: acbd12639ec42ea62ac35c4cb36df7bc9a122446a05d68bedfdfbb6d4d012b40127371c1a9046142fe04c8474ea2aa87450eee3d76f118e577e1ae3308706868
+Homepage: https://github.com/jwsung91/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics using the Python standard library and exposes
+ an HTTP API, web viewer and standalone terminal client.
+
+Package: platmon
+Architecture: all
+Version: 1.2.1-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 409
+Depends: python3 (>= 3.9), systemd, init-system-helpers (>= 1.56)
+Filename: pool/main/p/platmon/platmon_1.2.1-1_all.deb
+Size: 93380
+SHA256: cf26f173d4fb7acc9a3aaad8faa02e71cf38d2fe31a014256ca710f012c02b81
+SHA512: f99cce6758a66891f36f888025d0a9f338fe885a8eb842002563cb55154dcb582df8a90caaa316919d4379bbe33dd24a1d9b2e8d2e93d8e3030d606427a54145
+Homepage: https://github.com/jwsung91/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics using the Python standard library and exposes
+ an HTTP API, web viewer and standalone terminal client.
+
+Package: platmon
+Architecture: all
+Version: 1.3.0-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 401
+Depends: python3 (>= 3.9), systemd, init-system-helpers (>= 1.56)
+Filename: pool/main/p/platmon/platmon_1.3.0-1_all.deb
+Size: 99572
+SHA256: f1a0fea8a293d9250689cdb37af988b08daa724287ec497e41135bc4137e0752
+SHA512: 64680a47583a2f81cc874a0124c6d80bcf6f9a9eb1935a5fad6e0714774e9fc0e35314c94f006a1efdeb39c75954d335b5d056fa2096bab998de73fba897dd98
+Homepage: https://github.com/jwsung91/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics using the Python standard library and exposes
+ an HTTP API, web viewer and standalone terminal client.
+
+Package: platmon
+Architecture: amd64
+Version: 1.4.0-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 1636
+Depends: python3 (>= 3.9), systemd, init-system-helpers (>= 1.56)
+Filename: pool/main/p/platmon/platmon_1.4.0-1_amd64.deb
+Size: 606960
+SHA256: 2a71e3b5eda5e11569f8d9d9193be99167f6cd15285b021b6d2ed58d704fc0f1
+SHA512: 79944a4a8edd2ed25c7a4be9c0e7c09862a164ea21c2a122c602f22d441ac817fe76aeddbcd7353a9b8c4ec02646ccbd98c88c947360f0940646431e575520b6
+Homepage: https://github.com/platmon/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics with a static native server and exposes an HTTP
+ API and web viewer; the standalone terminal client uses the host's Python.
+
