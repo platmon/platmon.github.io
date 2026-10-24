@@ -4,7 +4,7 @@ Hash: SHA512
 Architectures: all amd64 arm64 armhf
 Codename: stable
 Components: main
-Date: Fri, 23 Oct 2026 12:44:55 +0000
+Date: Sat, 24 Oct 2026 07:03:57 +0000
 Description: platmon packages from GitHub releases
 Label: platmon
 Origin: platmon
@@ -12,25 +12,25 @@ Suite: stable
 SHA256:
  d207c5bbc59d01efc5e3dc12b553de85dff235678f0e7491288a3429ab36fe93             3755 main/binary-all/Packages
  f354365c83e6976ac763565a31c40a35336dcfc159ee3ca61cc42724a1c08221             1111 main/binary-all/Packages.gz
- 5de189e81a7c94de3191758129ec049ff949fed1412e8a051d49aa6d24a4d9a6             4532 main/binary-amd64/Packages
- af8420747fe909d0ce90bfde5877af22492d1e3a94c9d9f80d7b3fe7f4694a35             1322 main/binary-amd64/Packages.gz
- 5755e207ef5987a7f497d77c5a4d51e82dbbaa31d6e97ae82c6b513f6afbf0e2             4532 main/binary-arm64/Packages
- e5c2f900967febb4e321f30bdc973d647bc12f5e36e3eab1d71eb6018a3352f4             1323 main/binary-arm64/Packages.gz
+ 10bd30639251408b4c7a921c1711e5f85b0b9c17ec8a910c87c2dc0906959698             5309 main/binary-amd64/Packages
+ b78dfc1723439adbfac2fd87bcd68389cb6b7f78833dbc2739c2e899791a33a1             1464 main/binary-amd64/Packages.gz
+ 921dacf2093c9be49b4791ea06f5dab29f2245135013848c4437756f25a3408a             5309 main/binary-arm64/Packages
+ 1711e4f5f85652e03c136ae8624c8baec24a90defbad877730b154d6809b3e0b             1468 main/binary-arm64/Packages.gz
  d207c5bbc59d01efc5e3dc12b553de85dff235678f0e7491288a3429ab36fe93             3755 main/binary-armhf/Packages
  f354365c83e6976ac763565a31c40a35336dcfc159ee3ca61cc42724a1c08221             1111 main/binary-armhf/Packages.gz
 SHA512:
  a981d5b280c37e26c4dd25f77e095e1eb82907ebda65970a037fdda6b6afeb64ad04f24f46ab2b610c60326a39c7061f40055e3700739a7fbe5d33c7603a310a             3755 main/binary-all/Packages
  98dbe48514fbdcaa8239e88e471581ca807957193c305c7747c27c58c00c0fdacf67359d4c7d3a6ca3de7a509b909d2a2a041e243d9462f944068ea0e6d4fcd1             1111 main/binary-all/Packages.gz
- 7a74d4b98c2744e3f48ec03d5d500cf90f2ab8e9c635bb7e7d6ed98c4e9957bfe3bc1d8cbe855c91569e53bafdfbf9968684b5cd617f6c8ec20b32d684f73fcd             4532 main/binary-amd64/Packages
- d73937bfc57d7db8bb5ce5fdb70f92a03179a72e0fe5720f077be04b6133cf9e57bcbf3585666a9da11be3aaed4d38fc338b2dbdd6746693ea8a3277047230b2             1322 main/binary-amd64/Packages.gz
- 4f419a30575c1c73555d998d13b4efd028d8bb74dd8d34ab9ddb4b7900da787d718ebb02df16cd582dc4234497989b4050c1658560b8e3b9f2d183795643143a             4532 main/binary-arm64/Packages
- cf61340b94647fc47a4486188c3d9f2077029602052d37d1680aac38ef4969e4bd0835b69fe5c1f646129bb5ba9d1cd31bfb462eddfea1a8eb427f89d06d4d86             1323 main/binary-arm64/Packages.gz
+ 0c7fadb91062bc6641cf1962e8700b2ee15afc3cb324aa7299c6035cb926701d9781341fae60facde8f358083402520b4892cb694d2bfa6e669c12ab2addda42             5309 main/binary-amd64/Packages
+ 0ba2c91ba6bfca5fbbc79ef256aec42696e7e2de3f4aea0e374aee2c200bc7b3f394017492ab0cc12ffd2262a8975a63d35719b467cb777ddbb7fa45e6647c07             1464 main/binary-amd64/Packages.gz
+ 8af2a2fa093b21fe1a5d35e3e9838a5be7155185e0dafcde98895b7e0d7b8647eb7262d6cd88eaf4d9d7da34b3db020a045e5079ce12e70019ea097b0787ac16             5309 main/binary-arm64/Packages
+ 48302cf47731ee573ec020c90a1005582df548df4a62dadf1174491ec0c4d268802a598d24d8a4fcf291c3248a9e7437884226666bcc29161023b436e542b055             1468 main/binary-arm64/Packages.gz
  a981d5b280c37e26c4dd25f77e095e1eb82907ebda65970a037fdda6b6afeb64ad04f24f46ab2b610c60326a39c7061f40055e3700739a7fbe5d33c7603a310a             3755 main/binary-armhf/Packages
  98dbe48514fbdcaa8239e88e471581ca807957193c305c7747c27c58c00c0fdacf67359d4c7d3a6ca3de7a509b909d2a2a041e243d9462f944068ea0e6d4fcd1             1111 main/binary-armhf/Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQRtQsFKv7lBLzS6S+/zi5u1JqOwxgUCattWxwAKCRDzi5u1JqOw
-xudlAQD2PPZ+pvKzLPz56hFKllTZFMHtGikThheixQu5eC9L5AD8DCHwp3qBmwNd
-bThqUoqwtthV86Vb7wcZj1X9SGbHSAg=
-=kiFm
+iHUEARYKAB0WIQRtQsFKv7lBLzS6S+/zi5u1JqOwxgUCatxYXQAKCRDzi5u1JqOw
+xgKYAQDgOHbczaljfwgr7nJH+AFt6FvswVsraDlm1KH33O70LgD9GVFDIHKqHlr4
+WQwd/4RwccPFikv1M9JqsNWXyeT1pgw=
+=UVF6
 -----END PGP SIGNATURE-----
