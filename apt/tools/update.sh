@@ -4,8 +4,9 @@
 #   apt/tools/update.sh [--unsigned] [TAG...]
 #
 # Each TAG must be a published (not draft, not pre-release) GitHub release of
-# platmon/platmon, with either one Architecture: all .deb (1.3.0 and earlier) or
-# one .deb for each of amd64 and arm64 (from 1.4.0). Each .deb must match the
+# platmon/platmon, with one Architecture: all .deb (1.3.0 and earlier), one .deb
+# for each of amd64 and arm64 (1.4.0, 1.5.0), or one for each of amd64, arm64 and
+# armhf (later). Each .deb must match the
 # release's SHA256SUMS and either carry a build provenance attestation from the
 # release workflow for that tag, or be listed in apt/legacy-sha256.txt (releases
 # made before attestations existed).
@@ -56,8 +57,12 @@ add_release() {
     elif [ "$found" = "platmon_${expected}_amd64.deb platmon_${expected}_arm64.deb " ]; then
         add_deb "$tag" "$dir" amd64
         add_deb "$tag" "$dir" arm64
+    elif [ "$found" = "platmon_${expected}_amd64.deb platmon_${expected}_arm64.deb platmon_${expected}_armhf.deb " ]; then
+        add_deb "$tag" "$dir" amd64
+        add_deb "$tag" "$dir" arm64
+        add_deb "$tag" "$dir" armhf
     else
-        fail "$tag has [${found% }]; expected platmon_${expected}_all.deb, or _amd64.deb and _arm64.deb"
+        fail "$tag has [${found% }]; expected platmon_${expected}_all.deb, _amd64.deb and _arm64.deb, or those and _armhf.deb"
     fi
 }
 
@@ -98,7 +103,7 @@ done
 
 # Regenerate the index from the pool. Each architecture's index lists its own
 # packages and the Architecture: all ones (Debian's layout; an armhf host sees
-# only the latter, 1.3.0 and earlier); binary-all lists the Architecture: all ones.
+# 1.3.0 and earlier, then the armhf packages); binary-all lists the Architecture: all ones.
 cd "$root"
 dist=dists/$suite
 rm -rf "$dist"
