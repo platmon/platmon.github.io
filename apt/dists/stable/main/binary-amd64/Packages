@@ -117,3 +117,20 @@ Description: lightweight read-only Linux platform monitor
  Collects platform metrics with a static native server and exposes an HTTP
  API and web viewer; the standalone terminal client uses the host's Python.
 
+Package: platmon
+Architecture: amd64
+Version: 1.6.0-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 1637
+Depends: python3 (>= 3.9), systemd, init-system-helpers (>= 1.56)
+Filename: pool/main/p/platmon/platmon_1.6.0-1_amd64.deb
+Size: 611368
+SHA256: 37824c5c27e1a661c5c644da45433914303d075a5542ccd3800405daca2ff9ce
+SHA512: d34db73fb346772348518509130b45424711a755f12e73326e5920bedf0559f55234b0f248ee910429bc90aa4da5b6e754a2621f2cdd9155ba82e2600b2c4b69
+Homepage: https://github.com/platmon/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics with a static native server and exposes an HTTP
+ API and web viewer; the standalone terminal client uses the host's Python.
+
