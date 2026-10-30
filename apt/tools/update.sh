@@ -5,8 +5,9 @@
 #
 # Each TAG must be a published (not draft, not pre-release) GitHub release of
 # platmon/platmon, with one Architecture: all .deb (1.3.0 and earlier), one .deb
-# for each of amd64 and arm64 (1.4.0, 1.5.0), or one for each of amd64, arm64 and
-# armhf (later). Each .deb must match the
+# for each of amd64 and arm64 (1.4.0, 1.5.0), one for each of amd64, arm64 and
+# armhf (1.6.0), or those and platmon-cli's Architecture: all .deb (later: the
+# platmon command in its own package). Each .deb must match the
 # release's SHA256SUMS and either carry a build provenance attestation from the
 # release workflow for that tag, or be listed in apt/legacy-sha256.txt (releases
 # made before attestations existed).
@@ -61,19 +62,25 @@ add_release() {
         add_deb "$tag" "$dir" amd64
         add_deb "$tag" "$dir" arm64
         add_deb "$tag" "$dir" armhf
+    elif [ "$found" = "platmon-cli_${expected}_all.deb platmon_${expected}_amd64.deb platmon_${expected}_arm64.deb platmon_${expected}_armhf.deb " ]; then
+        add_deb "$tag" "$dir" amd64
+        add_deb "$tag" "$dir" arm64
+        add_deb "$tag" "$dir" armhf
+        add_deb "$tag" "$dir" all platmon-cli
     else
-        fail "$tag has [${found% }]; expected platmon_${expected}_all.deb, _amd64.deb and _arm64.deb, or those and _armhf.deb"
+        fail "$tag has [${found% }]; expected platmon_${expected}_all.deb, _amd64.deb and _arm64.deb, those and _armhf.deb, or those and platmon-cli_${expected}_all.deb"
     fi
 }
 
-# The release's .deb for one architecture; $expected is the caller's version.
+# The release's .deb of one package (platmon unless given) for one architecture;
+# $expected is the caller's version.
 add_deb() {
-    local tag=$1 dir=$2 arch=$3 deb name sum
-    name=platmon_${expected}_$arch.deb
+    local tag=$1 dir=$2 arch=$3 package=${4:-platmon} deb name sum
+    name=${package}_${expected}_$arch.deb
     deb=$dir/$name
     grep -q "  $name\$" "$dir/SHA256SUMS" || fail "$name is not in $tag's SHA256SUMS"
     (cd "$dir" && grep "  $name\$" SHA256SUMS | sha256sum -c --strict --quiet -) || fail "$name does not match SHA256SUMS"
-    [ "$(dpkg-deb -f "$deb" Package)" = platmon ] || fail "$name is not the platmon package"
+    [ "$(dpkg-deb -f "$deb" Package)" = "$package" ] || fail "$name is not the $package package"
     [ "$(dpkg-deb -f "$deb" Version)" = "$expected" ] || fail "$name has the wrong package version"
     [ "$(dpkg-deb -f "$deb" Architecture)" = "$arch" ] || fail "$name is not Architecture: $arch"
 
