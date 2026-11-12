@@ -11,7 +11,7 @@ platmon은 장치의 시스템 정보를 수집해 터미널, 웹 대시보드, 
 CPU와 메모리, 네트워크와 디스크 I/O는 물론, 하드웨어가 제공하는 GPU/NPU, 온도, 전력, 팬, 배터리와 Wi-Fi 정보를 확인할 수 있습니다. 지원하지 않는 항목은 사용할 수 없는 상태로 표시합니다.
 
 - **터미널과 웹에서 같은 데이터 확인.** 백그라운드 서비스가 수집한 결과를 여러 화면에서 읽습니다.
-- **간결한 실행 환경.** Python 3.9 이상 표준 라이브러리로 실행하며, 장치에 별도 Python 패키지를 설치할 필요가 없습니다.
+- **간결한 실행 환경.** 서비스는 Python 없이 동작하는 정적 네이티브 바이너리 하나입니다. 함께 설치되는 `platmon` 터미널 명령만 Python 3.9 이상의 표준 라이브러리를 사용합니다.
 - **최근 변화와 상세 데이터 확인.** 메모리 기반 추세와 제한된 기간의 발행 기록 조회를 제공합니다.
 - **환경에 맞는 설치.** Debian 패키지와 systemd, 소스 설치, 로컬 Docker 이미지 빌드를 지원합니다.
 
@@ -40,7 +40,7 @@ platmon-hub는 독립적으로 실행되는 Agent의 정보를 모아 여러 장
 
 ## 설치
 
-Agent는 서명된 APT 저장소에서 설치합니다. Jetson과 Raspberry Pi OS를 포함한 Ubuntu, Debian 계열에서 사용하며, Python 3.9 이상과 systemd가 필요합니다. `apt update` 전에 키 지문이 `6D42 C14A BFB9 412F 34BA 4BEF F38B 9BB5 26A3 B0C6`인지 확인하세요. 명령은 [APT 저장소](https://platmon.github.io/apt/) 페이지에 있습니다. `sudo apt update && sudo apt upgrade`로 업데이트하고, `sudo apt install platmon=<버전>`으로 이전 버전으로 되돌릴 수 있습니다.
+Agent는 서명된 APT 저장소에서 설치합니다. Jetson과 Raspberry Pi OS를 포함한 Ubuntu, Debian 계열의 amd64, arm64, armhf에서 사용하며, systemd가 필요합니다. 함께 설치되는 `platmon` 터미널 명령에는 Python 3.9 이상이 필요합니다. `apt update` 전에 키 지문이 `6D42 C14A BFB9 412F 34BA 4BEF F38B 9BB5 26A3 B0C6`인지 확인하세요. 명령은 [APT 저장소](https://platmon.github.io/apt/) 페이지에 있습니다. `sudo apt update && sudo apt upgrade`로 업데이트하고, `sudo apt install platmon=<버전>`으로 이전 버전으로 되돌릴 수 있습니다.
 
 Hub는 PyPI에서 설치합니다. Python 3.9 이상과 pipx가 필요합니다.
 
