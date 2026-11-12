@@ -40,6 +40,27 @@ Description: terminal client for the platmon platform monitor
  device's by default, in the terminal. One Python file that uses the host's
  Python standard library only.
 
+Package: platmon-cli
+Architecture: all
+Version: 1.8.1-1
+Priority: optional
+Section: admin
+Source: platmon
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 91
+Depends: python3 (>= 3.9)
+Breaks: platmon (<< 1.7.0)
+Replaces: platmon (<< 1.7.0)
+Filename: pool/main/p/platmon/platmon-cli_1.8.1-1_all.deb
+Size: 39316
+SHA256: 7c9f7bb2155ddf56f47b90daa4c5b37eb40d222e731b83f8b9b9b9914e1c0839
+SHA512: 04f9fe70bc9be97ff4d8a56975b847a9f0d3c30df66b471c3d06509d73657bd95ab58bd68a3db002014e4d076b2ef3d03a9294d0f030dbb9e2d3a3cb3646858f
+Homepage: https://github.com/platmon/platmon
+Description: terminal client for the platmon platform monitor
+ The platmon command: a live view of a platmon service's HTTP API, this
+ device's by default, in the terminal. One Python file that uses the host's
+ Python standard library only.
+
 Package: platmon
 Architecture: all
 Version: 1.0.0-1
@@ -208,6 +229,25 @@ Filename: pool/main/p/platmon/platmon_1.8.0-1_amd64.deb
 Size: 630176
 SHA256: d7714ed80151d6e9ae0937054abf1ef70bada33351b51a501ed6b53ac9b1ccc0
 SHA512: 93a49d4b4581b82745986ef3bc802a33f373b5c144fdb5e2784617340d1f52522979ea1c73bfa707c7dcb303ffee1e7649e43b1e4db344f158746756adab1e95
+Homepage: https://github.com/platmon/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics with a static native server and exposes an HTTP
+ API and web viewer. The terminal client, the platmon command, is in
+ platmon-cli.
+
+Package: platmon
+Architecture: amd64
+Version: 1.8.1-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 1680
+Depends: systemd, init-system-helpers (>= 1.56)
+Recommends: platmon-cli
+Filename: pool/main/p/platmon/platmon_1.8.1-1_amd64.deb
+Size: 635036
+SHA256: 09c0596edf66fa25fb29841300f17cc9f9ba937140e8c9624d5072338db550af
+SHA512: 2f8b30eee6ecc08ab0cd1e9687e35153c6a485590f7561167dec3e527be541b11e6e7609ccd4c6999c245cb8c39504180f71a484e3f4343068bcd007029d1adb
 Homepage: https://github.com/platmon/platmon
 Description: lightweight read-only Linux platform monitor
  Collects platform metrics with a static native server and exposes an HTTP
