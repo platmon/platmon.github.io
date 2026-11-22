@@ -7,8 +7,9 @@
 # platmon/platmon, with one Architecture: all .deb (1.3.0 and earlier), one .deb
 # for each of amd64 and arm64 (1.4.0, 1.5.0), one for each of amd64, arm64 and
 # armhf (1.6.0), those and platmon-cli's Architecture: all .deb (1.7.0 to 1.10.0:
-# the platmon command in its own package), or those and one platmon-cli .deb for
-# each of amd64, arm64 and armhf (later: the command native). Each .deb must match the
+# the platmon command in its own package), or those and one platmon-frontend .deb
+# for each of amd64, arm64 and armhf (later: the native command and the web page,
+# platmon-cli renamed). Each .deb must match the
 # release's SHA256SUMS and either carry a build provenance attestation from the
 # release workflow for that tag, or be listed in apt/legacy-sha256.txt (releases
 # made before attestations existed).
@@ -68,13 +69,13 @@ add_release() {
         add_deb "$tag" "$dir" arm64
         add_deb "$tag" "$dir" armhf
         add_deb "$tag" "$dir" all platmon-cli
-    elif [ "$found" = "platmon-cli_${expected}_amd64.deb platmon-cli_${expected}_arm64.deb platmon-cli_${expected}_armhf.deb platmon_${expected}_amd64.deb platmon_${expected}_arm64.deb platmon_${expected}_armhf.deb " ]; then
+    elif [ "$found" = "platmon-frontend_${expected}_amd64.deb platmon-frontend_${expected}_arm64.deb platmon-frontend_${expected}_armhf.deb platmon_${expected}_amd64.deb platmon_${expected}_arm64.deb platmon_${expected}_armhf.deb " ]; then
         for arch in amd64 arm64 armhf; do
             add_deb "$tag" "$dir" "$arch"
-            add_deb "$tag" "$dir" "$arch" platmon-cli
+            add_deb "$tag" "$dir" "$arch" platmon-frontend
         done
     else
-        fail "$tag has [${found% }]; expected platmon_${expected}_all.deb, _amd64.deb and _arm64.deb, those and _armhf.deb, those and platmon-cli_${expected}_all.deb, or those and platmon-cli_${expected}_amd64.deb, _arm64.deb and _armhf.deb"
+        fail "$tag has [${found% }]; expected platmon_${expected}_all.deb, _amd64.deb and _arm64.deb, those and _armhf.deb, those and platmon-cli_${expected}_all.deb, or those and platmon-frontend_${expected}_amd64.deb, _arm64.deb and _armhf.deb"
     fi
 }
 
