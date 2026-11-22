@@ -1,5 +1,26 @@
 Package: platmon-cli
 Architecture: all
+Version: 1.10.0-1
+Priority: optional
+Section: admin
+Source: platmon
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 96
+Depends: python3 (>= 3.9)
+Breaks: platmon (<< 1.7.0)
+Replaces: platmon (<< 1.7.0)
+Filename: pool/main/p/platmon/platmon-cli_1.10.0-1_all.deb
+Size: 42676
+SHA256: 2d7e64b8c0b1b67982cf7474d0a23f805679a783383ad967a68d26a1a80ec88d
+SHA512: dfd2c5bd1f869d6ae47ca760916c47ad88dac6ef04c15382eda18efaa069014c3cd59283036c83bf25e71d443d76e75eb1fe46a8ead757f0331448839381655d
+Homepage: https://github.com/platmon/platmon
+Description: terminal client for the platmon platform monitor
+ The platmon command: a live view of a platmon service's HTTP API, this
+ device's by default, in the terminal. One Python file that uses the host's
+ Python standard library only.
+
+Package: platmon-cli
+Architecture: all
 Version: 1.7.0-1
 Priority: optional
 Section: admin
@@ -136,6 +157,25 @@ Homepage: https://github.com/jwsung91/platmon
 Description: lightweight read-only Linux platform monitor
  Collects platform metrics using the Python standard library and exposes
  an HTTP API, web viewer and standalone terminal client.
+
+Package: platmon
+Architecture: amd64
+Version: 1.10.0-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 1699
+Depends: systemd, init-system-helpers (>= 1.56)
+Recommends: platmon-cli
+Filename: pool/main/p/platmon/platmon_1.10.0-1_amd64.deb
+Size: 644340
+SHA256: d34e8474e2bd3cd29068c0c76e0cb545fd8213a74ce0bf5d89a1d5df7f87ca96
+SHA512: 949db2b2c8dc3a25437d14542c206480e5163c5ff7e8f9b633e563835e83fa2a9a23d57fdbe1a807c514142aefb4e7b1d82abf7ca7442ae5c15f321ba05575d9
+Homepage: https://github.com/platmon/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics with a static native server and exposes an HTTP
+ API and web viewer. The terminal client, the platmon command, is in
+ platmon-cli.
 
 Package: platmon
 Architecture: all
