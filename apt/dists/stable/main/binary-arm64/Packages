@@ -124,6 +124,29 @@ Description: terminal client for the platmon platform monitor
  device's by default, in the terminal. One Python file that uses the host's
  Python standard library only.
 
+Package: platmon-frontend
+Architecture: arm64
+Version: 1.11.0-1
+Priority: optional
+Section: admin
+Source: platmon
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 1615
+Conflicts: platmon-cli (<< 1.11.0)
+Breaks: platmon (<< 1.11.0)
+Replaces: platmon (<< 1.11.0), platmon-cli (<< 1.11.0)
+Filename: pool/main/p/platmon/platmon-frontend_1.11.0-1_arm64.deb
+Size: 456936
+SHA256: 0802978e8c4403f52babf5aa3cde46a86dac1df75f64d6224cc10e7bd89a87e5
+SHA512: d99ac31298f317f53447f99e22b703a84234ce92c53729f9cc877934ad529117d36cd169142a10408f7a117047464110a3578b47e4be0150483fffb679ea474a
+Homepage: https://github.com/platmon/platmon
+Description: web page, terminal client and tray icon for the platmon platform monitor
+ The frontends of a platmon service: the web page the platmon server sends
+ from /usr/share/platmon, the platmon command, a live view of the HTTP API
+ in the terminal, this device's by default, and platmon-tray, its state as
+ a tray icon (StatusNotifierItem; started at login only for the users who
+ ask for it). They are static native binaries, without Python.
+
 Package: platmon
 Architecture: all
 Version: 1.0.0-1
@@ -176,6 +199,25 @@ Description: lightweight read-only Linux platform monitor
  Collects platform metrics with a static native server and exposes an HTTP
  API and web viewer. The terminal client, the platmon command, is in
  platmon-cli.
+
+Package: platmon
+Architecture: arm64
+Version: 1.11.0-1
+Priority: optional
+Section: admin
+Maintainer: platmon maintainers <jwsung91@users.noreply.github.com>
+Installed-Size: 1318
+Depends: systemd, init-system-helpers (>= 1.56)
+Recommends: platmon-frontend
+Filename: pool/main/p/platmon/platmon_1.11.0-1_arm64.deb
+Size: 530604
+SHA256: 46e84df1bcbc3b40a0cd670cfebbe5c53e0c854919d6b03af211c2153ca0ebd8
+SHA512: f0a3f0e74c207feb4ab0d5ba9a503e37c289d84c580b7e6d1048d0b5ddaad9a8b555a0fe005a96561729c37304981c9cdb9f9a406f64e868bd032c825a74f695
+Homepage: https://github.com/platmon/platmon
+Description: lightweight read-only Linux platform monitor
+ Collects platform metrics with a static native server and exposes them in
+ an HTTP API. The web page it serves and the terminal client, the platmon
+ command, are in platmon-frontend.
 
 Package: platmon
 Architecture: all
