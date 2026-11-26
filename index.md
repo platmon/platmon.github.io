@@ -1,8 +1,8 @@
 # platmon
 
-**Jetson부터 Raspberry Pi, Linux PC까지. 장치의 상태를 가볍게 확인하세요.**
+**Jetson, Raspberry Pi 같은 Linux 보드부터 Windows 11 PC까지. 장치의 상태를 가볍게 확인하세요.**
 
-platmon은 장치의 시스템 정보를 수집해 터미널, 웹 대시보드, HTTP API로 제공합니다. 한 대의 상태를 확인할 때는 platmon을, 여러 장치를 한곳에서 살펴볼 때는 platmon-hub를 사용하세요.
+platmon은 장치의 시스템 정보를 수집해 터미널, 웹 대시보드, 트레이, HTTP API로 제공합니다. 한 대의 상태를 확인할 때는 platmon을, 여러 장치를 한곳에서 살펴볼 때는 platmon-hub를 사용하세요.
 
 [platmon 시작하기](https://github.com/platmon/platmon/blob/main/docs/guides/getting-started.md) · [GitHub에서 보기](https://github.com/platmon/platmon)
 
@@ -11,9 +11,9 @@ platmon은 장치의 시스템 정보를 수집해 터미널, 웹 대시보드, 
 CPU와 메모리, 네트워크와 디스크 I/O는 물론, 하드웨어가 제공하는 GPU/NPU, 온도, 전력, 팬, 배터리와 Wi-Fi 정보를 확인할 수 있습니다. 지원하지 않는 항목은 사용할 수 없는 상태로 표시합니다.
 
 - **터미널과 웹에서 같은 데이터 확인.** 백그라운드 서비스가 수집한 결과를 여러 화면에서 읽습니다.
-- **간결한 실행 환경.** 서비스는 Python 없이 동작하는 정적 네이티브 바이너리 하나입니다. 함께 설치되는 `platmon` 터미널 명령만 Python 3.9 이상의 표준 라이브러리를 사용합니다.
+- **간결한 실행 환경.** 서비스와 `platmon` 터미널 명령은 정적 네이티브 바이너리입니다. 장치에 Python, pip, Node, 데이터베이스가 필요 없습니다.
 - **최근 변화와 상세 데이터 확인.** 메모리 기반 추세와 제한된 기간의 발행 기록 조회를 제공합니다.
-- **환경에 맞는 설치.** Debian 패키지와 systemd, 소스 설치, 로컬 Docker 이미지 빌드를 지원합니다.
+- **환경에 맞는 설치.** APT 저장소의 Debian 패키지, Windows 11 설치 파일, RPM 패키지, 소스 설치, 로컬 Docker 이미지 빌드를 지원합니다.
 
 ## 여러 장치는 platmon-hub로
 
@@ -24,8 +24,8 @@ platmon-hub는 독립적으로 실행되는 Agent의 정보를 모아 여러 장
 | | platmon | platmon-hub |
 | --- | --- | --- |
 | 역할 | 한 장치의 시스템 정보 수집과 표시 | 여러 Agent의 상태 조회와 집계 |
-| 실행 환경 | Linux 장치 | Windows 또는 Linux |
-| 주요 인터페이스 | 터미널, 웹 대시보드, HTTP API | 웹 대시보드, HTTP API |
+| 실행 환경 | Linux 장치, Windows 11 PC | Windows 또는 Linux |
+| 주요 인터페이스 | 터미널, 웹 대시보드, 트레이, HTTP API | 웹 대시보드, HTTP API |
 | 기록 | 메모리 기반 추세와 발행 기록 | 선택적 SQLite 기록과 데이터 내보내기 |
 
 [Hub 시작하기](https://github.com/platmon/platmon-hub/blob/main/docs/guides/quick-start.md) · [Hub GitHub](https://github.com/platmon/platmon-hub)
@@ -40,7 +40,7 @@ platmon-hub는 독립적으로 실행되는 Agent의 정보를 모아 여러 장
 
 ## 설치
 
-Agent는 서명된 APT 저장소에서 설치합니다. Jetson과 Raspberry Pi OS를 포함한 Ubuntu, Debian 계열의 amd64, arm64, armhf에서 사용하며, systemd가 필요합니다. 함께 설치되는 `platmon` 터미널 명령에는 Python 3.9 이상이 필요합니다. `apt update` 전에 키 지문이 `6D42 C14A BFB9 412F 34BA 4BEF F38B 9BB5 26A3 B0C6`인지 확인하세요. 명령은 [APT 저장소](https://platmon.github.io/apt/) 페이지에 있습니다. `sudo apt update && sudo apt upgrade`로 업데이트하고, `sudo apt install platmon=<버전>`으로 이전 버전으로 되돌릴 수 있습니다.
+Agent는 서명된 APT 저장소에서 설치합니다. Jetson과 Raspberry Pi OS를 포함한 Ubuntu, Debian 계열의 amd64, arm64, armhf에서 사용하며, systemd가 필요합니다. 웹 화면, `platmon` 명령, 트레이는 `platmon-frontend` 패키지로 함께 설치됩니다. `apt update` 전에 키 지문이 `6D42 C14A BFB9 412F 34BA 4BEF F38B 9BB5 26A3 B0C6`인지 확인하세요. 명령은 [설치](https://platmon.github.io/install/) 페이지에 있습니다. `sudo apt update && sudo apt upgrade`로 업데이트하고(1.7.0–1.10.0의 `platmon-cli`가 있으면 먼저 `sudo apt install platmon-frontend`를 한 번 실행), `sudo apt install platmon=<버전>`으로 이전 버전으로 되돌릴 수 있습니다.
 
 Hub는 PyPI에서 설치합니다. Python 3.9 이상과 pipx가 필요합니다.
 
@@ -53,11 +53,11 @@ platmon-hub --version
 
 ## 시작하기
 
-1. 모니터링할 Linux 장치에 [platmon을 설치](https://github.com/platmon/platmon/blob/main/docs/guides/getting-started.md)합니다.
+1. 모니터링할 장치에 [platmon을 설치](https://github.com/platmon/platmon/blob/main/docs/guides/getting-started.md)합니다.
 2. 터미널에서 `platmon`을 실행하거나 브라우저로 `http://<장치 주소>:9797`에 접속합니다.
 3. 여러 장치를 함께 보려면 [platmon-hub를 실행하고 Agent를 등록](https://github.com/platmon/platmon-hub/blob/main/docs/guides/setup.md)합니다.
 
-Agent의 HTTP 서비스는 기본적으로 인증 없이 모든 IPv4 인터페이스에서 수신합니다. 신뢰할 수 있는 네트워크에서 운영하거나 바인딩 주소를 제한하세요. Hub는 기본적으로 `127.0.0.1:9787`에서 시작합니다.
+Linux에서 Agent의 HTTP 서비스는 기본적으로 인증 없이 모든 IPv4 인터페이스(`0.0.0.0:9797`)에서 수신합니다. Windows 패키지는 `127.0.0.1`에서만 수신합니다. 신뢰할 수 있는 네트워크에서 운영하거나 바인딩 주소를 제한하세요. Hub는 기본적으로 `127.0.0.1:9787`에서 시작합니다.
 
 ## 문서와 소스
 

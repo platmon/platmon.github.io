@@ -1,12 +1,18 @@
 # platmon.github.io
 
-platmon과 platmon-hub의 한국어 프로젝트 소개 페이지입니다.
+platmon과 platmon-hub의 프로젝트 소개 사이트입니다(한국어·영어).
 
-- `index.html`: 실제 소개 페이지
-- `styles.css`: 반응형 스타일
-- `copy.js`: 명령 블록의 복사 버튼 (홈과 `apt/index.html`)
-- `assets/`: 프로젝트의 공식 로고와 파비콘, 링크 미리보기 이미지 `og-image.png` (Apache-2.0)
+- `index.html`: 소개(홈)
+- `install/index.html`: platmon 설치
+- `hub/index.html`: platmon-hub 소개와 설치
+- `apt/index.html`: APT 저장소 안내(영어)
+- `styles.css`: 모든 페이지가 함께 쓰는 반응형 스타일. 색상은 `:root`의 변수로 관리합니다(`apt/index.html`은 같은 값을 자체 스타일에 씁니다).
+- `language.js`: 모든 페이지의 한국어·영어 문구
+- `copy.js`: 명령 블록의 복사 버튼 (설치, Hub, APT 페이지)
+- `assets/`: 프로젝트의 공식 로고와 파비콘, 링크 미리보기 이미지 `og-image.png`, platmon README와 같은 스크린샷 `screenshots/` (Apache-2.0)
 - `index.md`: 소개 문안 참고 자료
+
+페이지마다 헤더와 푸터가 HTML에 그대로 들어 있습니다. 메뉴나 푸터를 바꾸면 세 페이지(`index.html`, `install/`, `hub/`)를 함께 고칩니다.
 
 빌드나 패키지 설치 없이 정적 서버에서 실행할 수 있습니다.
 
@@ -32,4 +38,4 @@ python3 -m http.server 8080 --bind 127.0.0.1
 
 한국어·영어를 지원합니다. 기본 언어는 저장된 사용자 선택을 우선하고, 없으면 브라우저의 첫 번째 선호 언어가 한국어(`ko`, `ko-KR` 등)일 때 한국어, 그 외에는 영어를 사용합니다. 실제 위치나 IP는 조회하지 않습니다.
 
-헤더의 EN / 한국어 버튼으로 바꿀 수 있으며, 선택은 해당 브라우저의 localStorage에 저장됩니다. 저장이 차단된 환경에서도 현재 페이지의 언어 전환은 동작합니다. JavaScript가 꺼져 있으면 기본 HTML인 영어로 표시됩니다. 번역 문구는 `language.js`에서 관리하며 영어 문구를 바꾸면 `index.html`의 기본 문구도 함께 갱신합니다. `index.md`는 한국어 문안 참고 자료입니다.
+헤더의 EN / 한국어 버튼으로 바꿀 수 있으며, 선택은 해당 브라우저의 localStorage에 저장됩니다. 저장이 차단된 환경에서도 현재 페이지의 언어 전환은 동작합니다. JavaScript가 꺼져 있으면 기본 HTML인 영어로 표시됩니다. 번역 문구는 `language.js`에서 `home.*`, `install.*`, `hub.*`처럼 페이지별 키로 관리하며, 영어 문구를 바꾸면 해당 HTML의 기본 문구도 함께 갱신합니다. `index.md`는 한국어 문안 참고 자료입니다.

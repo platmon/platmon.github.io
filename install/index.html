@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="install.title">Install platmon</title>
+<meta name="description" content="Install platmon from the signed APT repository on Ubuntu and Debian, or with the Windows 11 installer, RPM packages or a source install." data-i18n-attr="content" data-i18n="install.description">
+<meta property="og:type" content="website"><meta property="og:url" content="https://platmon.github.io/install/">
+<meta property="og:site_name" content="platmon"><meta property="og:title" content="Install platmon">
+<meta property="og:description" content="Install platmon from the signed APT repository on Ubuntu and Debian, or with the Windows 11 installer, RPM packages or a source install.">
+<meta property="og:image" content="https://platmon.github.io/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="platmon logo with the line: Small devices. A clear view."><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="common.skip">Skip to content</a>
+<header class="wrap"><a href="../" aria-label="platmon home" data-i18n-attr="aria-label" data-i18n="common.home"><img class="logo" src="../assets/platmon-logo-dark.svg" alt="platmon"></a><nav aria-label="Main navigation" data-i18n-attr="aria-label" data-i18n="common.nav"><a href="../hub/" data-i18n="nav.hub">Hub</a><a href="./" aria-current="page" data-i18n="nav.install">Install</a><a href="https://github.com/platmon/platmon/blob/main/docs/README.md" data-i18n="nav.docs">Docs ↗</a><a href="https://github.com/platmon/platmon">GitHub ↗</a><div class="language-switch" role="group" aria-label="Language / 언어" hidden><button type="button" data-language="en" lang="en" aria-pressed="true">EN</button><button type="button" data-language="ko" lang="ko" aria-pressed="false">한국어</button></div></nav></header>
+<main id="main" class="page">
+<section class="wrap page-hero"><p class="eyebrow" data-i18n="install.eyebrow">INSTALL</p><h1 data-i18n="install.h1">Install platmon on your device.</h1><p class="lead" data-i18n="install.lead">The service starts with the install. The web page, the <code>platmon</code> command and the tray come with it.</p>
+<aside class="notice" aria-labelledby="notice-title"><strong id="notice-title" data-i18n="install.notice.h">Check the network first</strong><span data-i18n="install.notice.p">On Linux the service listens on all IPv4 interfaces (<code>0.0.0.0:9797</code>) without authentication. Anyone who can reach the port can read the host name, kernel, interfaces and other readings. Use a trusted network, or set <code>bind</code> in <code>/etc/platmon/platmon.ini</code>. The Windows packages listen on <code>127.0.0.1</code> only.</span><a href="https://github.com/platmon/platmon/blob/main/docs/guides/deployment.md#choosing-what-is-served" data-i18n="install.notice.a">Choose what is served ↗</a></aside></section>
+<section class="wrap section prose" id="apt"><h2 data-i18n="install.apt.h">Ubuntu and Debian</h2><p data-i18n="install.apt.p">Ubuntu and Debian-derived systems with systemd, including Jetson and Raspberry Pi OS, on amd64, arm64 and armhf.</p>
+<pre><code>sudo install -d -m 0755 /etc/apt/keyrings
+curl -fsSL https://platmon.github.io/apt/platmon-archive-keyring.gpg \
+  | sudo tee /etc/apt/keyrings/platmon.gpg &gt; /dev/null
+gpg --show-keys /etc/apt/keyrings/platmon.gpg
+sudo tee /etc/apt/sources.list.d/platmon.sources &gt; /dev/null &lt;&lt;EOF
+Types: deb
+URIs: https://platmon.github.io/apt
+Suites: stable
+Components: main
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/platmon.gpg
+EOF
+sudo apt update
+sudo apt install platmon</code></pre>
+<p data-i18n="install.fpr">Before <code>apt update</code>, check that <code>gpg --show-keys</code> prints this fingerprint:</p><code class="fpr">6D42 C14A BFB9 412F 34BA 4BEF F38B 9BB5 26A3 B0C6</code>
+<p data-i18n="install.update">Update with <code>sudo apt update &amp;&amp; sudo apt upgrade</code>. If <code>platmon-cli</code> from 1.7.0–1.10.0 is installed, run <code>sudo apt install platmon-frontend</code> once: until then <code>apt upgrade</code> keeps <code>platmon</code> back.</p>
+<p data-i18n="install.rollback">Earlier versions stay in the repository, so <code>sudo apt install platmon=&lt;version&gt;</code> rolls back. Rolling back to 1.10.0 or earlier removes <code>platmon-frontend</code>.</p>
+<p class="links"><a href="../apt/" data-i18n="install.apt.a1">APT repository ↗</a><a href="https://github.com/platmon/platmon/blob/main/docs/guides/getting-started.md" data-i18n="install.apt.a2">Getting started guide ↗</a></p></section>
+<section class="wrap section prose" id="other"><h2 data-i18n="install.other.h">Other ways to install</h2><p data-i18n="install.other.p">Every way runs the same server. Release files come with <code>SHA256SUMS</code>.</p>
+<table class="ways"><thead><tr><th scope="col" data-i18n="install.th1">You have</th><th scope="col" data-i18n="install.th2">Use</th></tr></thead><tbody>
+<tr><th scope="row" data-i18n="install.r1.k">Windows 11 (x86_64)</th><td data-i18n="install.r1.v">The installer <code>platmon-&lt;version&gt;-windows-x86_64.msi</code>, or the zip to try it, from GitHub Releases. <a href="https://github.com/platmon/platmon/blob/main/docs/guides/getting-started.md#windows">Windows guide ↗</a></td></tr>
+<tr><th scope="row" data-i18n="install.r2.k">Fedora or Enterprise Linux 9+</th><td data-i18n="install.r2.v">The unsigned <code>.rpm</code> packages (x86_64, aarch64) from GitHub Releases. <a href="https://github.com/platmon/platmon/blob/main/docs/reference/packaging.md#rpm-packages">RPM packages ↗</a></td></tr>
+<tr><th scope="row" data-i18n="install.r3.k">No access to the APT repository</th><td data-i18n="install.r3.v">The <code>.deb</code> files from GitHub Releases, checked with <code>sha256sum -c SHA256SUMS</code>. <a href="https://github.com/platmon/platmon/blob/main/docs/guides/getting-started.md#requirements-and-installation">Steps ↗</a></td></tr>
+<tr><th scope="row" data-i18n="install.r4.k">Another Linux, or a change to try</th><td data-i18n="install.r4.v">A source installation with systemd, or a container you build yourself. <a href="https://github.com/platmon/platmon/blob/main/docs/guides/deployment.md">Deployment guide ↗</a></td></tr>
+<tr><th scope="row" data-i18n="install.r5.k">A headless device that only feeds Hub or Prometheus</th><td data-i18n="install.r5.v"><code>sudo apt install --no-install-recommends platmon</code>: the API without the web page and the terminal client.</td></tr>
+</tbody></table>
+<p class="links"><a href="https://github.com/platmon/platmon/releases" data-i18n="install.releases">GitHub Releases ↗</a></p></section>
+<section class="wrap section start" id="next"><h2 data-i18n="install.next.h">After installing</h2><ol class="steps"><li><span>1</span><div><h3 data-i18n="install.n1.h">Check the service</h3><p data-i18n="install.n1.p">It should be active, and one snapshot should print.</p><code class="address">systemctl status platmon --no-pager<br>platmon --once</code></div></li><li><span>2</span><div><h3 data-i18n="install.n2.h">Open a view</h3><p data-i18n="install.n2.p">Run <code>platmon</code>, or open the device address in a browser.</p><code class="address" data-i18n="install.n2.code">http://&lt;device-address&gt;:9797</code></div></li><li><span>3</span><div><h3 data-i18n="install.n3.h">Add more devices</h3><p data-i18n="install.n3.p">Run platmon-hub on another computer to see every device in one place.</p><a href="../hub/" data-i18n="install.n3.a">platmon-hub →</a></div></li></ol></section>
+</main>
+<footer class="wrap"><div><img class="logo" src="../assets/platmon-logo-dark.svg" alt="platmon"><p data-i18n="footer.tagline">Lightweight platform monitor.</p></div><div><a href="https://github.com/platmon/platmon/blob/main/docs/README.md" data-i18n="footer.docs">Documentation ↗</a><a href="https://github.com/platmon/platmon/blob/main/docs/performance/README.md" data-i18n="footer.performance">Performance ↗</a><a href="https://github.com/platmon/platmon/blob/main/SECURITY.md" data-i18n="footer.security">Security ↗</a><a href="https://github.com/platmon/platmon-hub" data-i18n="footer.hub">Hub GitHub ↗</a><span>Apache-2.0</span></div></footer>
+<script src="../language.js"></script>
+<script src="../copy.js"></script>
+</body></html>

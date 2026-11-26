@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="hub.title">platmon-hub — many devices in one view</title>
+<meta name="description" content="platmon-hub runs on Windows or Linux, reads each platmon device's HTTP API and adds history, alerts and exports." data-i18n-attr="content" data-i18n="hub.description">
+<meta property="og:type" content="website"><meta property="og:url" content="https://platmon.github.io/hub/">
+<meta property="og:site_name" content="platmon"><meta property="og:title" content="platmon-hub — many devices in one view">
+<meta property="og:description" content="platmon-hub runs on Windows or Linux, reads each platmon device's HTTP API and adds history, alerts and exports.">
+<meta property="og:image" content="https://platmon.github.io/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="platmon logo with the line: Small devices. A clear view."><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="common.skip">Skip to content</a>
+<header class="wrap"><a href="../" aria-label="platmon home" data-i18n-attr="aria-label" data-i18n="common.home"><img class="logo" src="../assets/platmon-logo-dark.svg" alt="platmon"></a><nav aria-label="Main navigation" data-i18n-attr="aria-label" data-i18n="common.nav"><a href="./" aria-current="page" data-i18n="nav.hub">Hub</a><a href="../install/" data-i18n="nav.install">Install</a><a href="https://github.com/platmon/platmon/blob/main/docs/README.md" data-i18n="nav.docs">Docs ↗</a><a href="https://github.com/platmon/platmon">GitHub ↗</a><div class="language-switch" role="group" aria-label="Language / 언어" hidden><button type="button" data-language="en" lang="en" aria-pressed="true">EN</button><button type="button" data-language="ko" lang="ko" aria-pressed="false">한국어</button></div></nav></header>
+<main id="main" class="page">
+<section class="wrap page-hero hub-hero"><div><p class="eyebrow" data-i18n="hub.eyebrow">PLATMON-HUB</p><h1 data-i18n="hub.h1">Many devices.<br>One platmon-hub.</h1><p class="lead" data-i18n="hub.lead">Run Hub on Windows or Linux. It reads each device's HTTP API and shows their readings in one dashboard.</p><p class="note" data-i18n="hub.note">Python 3.9+ · No third-party dependencies · Apache-2.0</p></div>
+<div class="hub-details"><div><span data-i18n="hub.d1.k">LIVE</span><h3 data-i18n="hub.d1.h">Every device in one dashboard</h3><p data-i18n="hub.d1.p">Readings and status from each registered device, side by side.</p></div><div><span data-i18n="hub.d2.k">RECORD</span><h3 data-i18n="hub.d2.h">History, alerts and exports</h3><p data-i18n="hub.d2.p">Optional SQLite history, internal alerts and data exports.</p></div><div><span data-i18n="hub.d3.k">INDEPENDENT</span><h3 data-i18n="hub.d3.h">Devices keep collecting</h3><p data-i18n="hub.d3.p">Devices run on their own when Hub stops. Hub never installs or controls them, and its HTTP is read-only by default.</p></div></div></section>
+<section class="wrap section prose" id="install"><p class="compat" data-i18n="hub.compat">Which Hub release reads which platmon release is in the <a href="https://github.com/platmon/platmon/blob/main/docs/reference/hub-compatibility.md">compatibility table ↗</a>.</p>
+<h2 data-i18n="hub.install.h">Install Hub</h2><p data-i18n="hub.install.p">Requires Python 3.9+ and <a href="https://pipx.pypa.io/">pipx</a>.</p>
+<pre><code>pipx install platmon-hub
+platmon-hub --version</code></pre>
+<p data-i18n="hub.start.p">Start with an empty device list in the current directory, keep the terminal running, and open <code>http://127.0.0.1:9787/</code> on the same computer. Zero devices is expected.</p>
+<p class="code-label" data-i18n="hub.linux">Linux</p>
+<pre><code>echo '{"nodes": []}' &gt; nodes.json
+platmon-hub --nodes ./nodes.json</code></pre>
+<p class="code-label" data-i18n="hub.windows">Windows PowerShell</p>
+<pre><code>Set-Content -Path nodes.json -Value '{"nodes": []}' -Encoding ascii
+platmon-hub --nodes .\nodes.json</code></pre>
+<p data-i18n="hub.update">Update with <code>pipx upgrade platmon-hub</code>. This is a personal install: for a service, a Windows startup task or an upgrade that keeps history, follow the operations guide.</p>
+<p class="small-note" data-i18n="hub.loopback">Hub listens on loopback by default. Keep the first run there.</p>
+<h2 data-i18n="hub.next.h">Next</h2>
+<p class="links"><a href="https://github.com/platmon/platmon-hub/blob/main/docs/guides/setup.md#register-agents-and-start-monitoring" data-i18n="hub.a1">Register devices ↗</a><a href="https://github.com/platmon/platmon-hub/blob/main/docs/guides/quick-start.md" data-i18n="hub.a2">Quick start ↗</a><a href="https://github.com/platmon/platmon-hub/blob/main/docs/guides/operations.md" data-i18n="hub.a3">Install and operate ↗</a><a href="https://github.com/platmon/platmon-hub/blob/main/docs/README.md" data-i18n="hub.a4">Hub documentation ↗</a></p></section>
+</main>
+<footer class="wrap"><div><img class="logo" src="../assets/platmon-logo-dark.svg" alt="platmon"><p data-i18n="footer.tagline">Lightweight platform monitor.</p></div><div><a href="https://github.com/platmon/platmon/blob/main/docs/README.md" data-i18n="footer.docs">Documentation ↗</a><a href="https://github.com/platmon/platmon/blob/main/docs/performance/README.md" data-i18n="footer.performance">Performance ↗</a><a href="https://github.com/platmon/platmon/blob/main/SECURITY.md" data-i18n="footer.security">Security ↗</a><a href="https://github.com/platmon/platmon-hub" data-i18n="footer.hub">Hub GitHub ↗</a><span>Apache-2.0</span></div></footer>
+<script src="../language.js"></script>
+<script src="../copy.js"></script>
+</body></html>

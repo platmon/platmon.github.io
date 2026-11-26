@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>platmon APT repository</title>
 <meta name="color-scheme" content="dark">
-<meta name="description" content="Signed APT repository for the platmon Debian package.">
+<meta name="description" content="Signed APT repository for the platmon Debian packages.">
 <link rel="icon" href="../assets/favicon.svg">
 <style>
 :root { --bg: #121417; --surface: #1a201d; --surface-accent: #21382c; --line: #2c3236; --line-soft: #344039; --line-accent: #4e7b60; --text: #e6e8eb; --text-muted: #aeb7bf; --code: #c7d4cb; --accent: #4fb286; --accent-hover: #6ac79d; --on-accent: #101814; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
@@ -38,10 +38,10 @@ code.fpr { overflow-wrap: anywhere; color: var(--text); font-size: .95rem; }
 </style>
 </head>
 <body>
-<header><a href="../" aria-label="platmon home"><img class="logo" src="../assets/platmon-logo-dark.svg" alt="platmon"></a><a href="../">← platmon home</a></header>
+<header><a href="../" aria-label="platmon home"><img class="logo" src="../assets/platmon-logo-dark.svg" alt="platmon"></a><a href="../install/">← Install platmon</a></header>
 <main>
 <h1>platmon APT repository</h1>
-<p>Signed APT repository for the <a href="https://github.com/platmon/platmon">platmon</a> Debian package. It holds the same <code>.deb</code> files as the <a href="https://github.com/platmon/platmon/releases">GitHub releases</a>; platmon-hub is installed from PyPI.</p>
+<p>Signed APT repository for the <a href="https://github.com/platmon/platmon">platmon</a> Debian packages: <code>platmon</code>, the service, and <code>platmon-frontend</code>, the web page, the <code>platmon</code> command and the tray, which apt installs with it. It holds the same <code>.deb</code> files as the <a href="https://github.com/platmon/platmon/releases">GitHub releases</a>; platmon-hub is installed from PyPI.</p>
 
 <h2>Install</h2>
 <pre><code>sudo install -d -m 0755 /etc/apt/keyrings
