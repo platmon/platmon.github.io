@@ -3,32 +3,45 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>platmon APT repository</title>
-<meta name="description" content="Signed APT repository for the platmon Debian package.">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Signed APT repository for the platmon Debian packages.">
 <link rel="icon" href="../assets/favicon.svg">
 <style>
-:root { --bg: #ffffff; --fg: #1d2127; --muted: #5b6470; --code: #f2f4f7; --line: #dde1e6; --link: #0b62c4; }
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #111418; --fg: #e8eaed; --muted: #a3abb6; --code: #1c2127; --line: #2c333b; --link: #6cb0ff; }
-}
-body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, sans-serif; }
-main { max-width: 46rem; margin: 0 auto; padding: 2rem 16px 3rem; }
-h1 { font-size: 1.6rem; margin: 0 0 .5rem; }
-h2 { font-size: 1.1rem; margin: 2rem 0 .5rem; }
-p, li { color: var(--muted); }
-a { color: var(--link); }
-pre, code { font: .9rem/1.5 ui-monospace, monospace; }
-pre { background: var(--code); border: 1px solid var(--line); border-radius: 6px; padding: .75rem 1rem; overflow-x: auto; color: var(--fg); }
+:root { --bg: #121417; --surface: #1a201d; --surface-accent: #21382c; --line: #2c3236; --line-soft: #344039; --line-accent: #4e7b60; --text: #e6e8eb; --text-muted: #aeb7bf; --code: #c7d4cb; --accent: #4fb286; --accent-hover: #6ac79d; --on-accent: #101814; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.7 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent-hover); }
+a:hover { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+header, main { max-width: 46rem; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+header { display: flex; justify-content: space-between; align-items: center; min-height: 88px; border-bottom: 1px solid var(--line); }
+header a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-size: 14px; color: var(--text-muted); }
+header a:hover { color: var(--accent); }
+.logo { width: 124px; height: auto; display: block; }
+main { padding-top: 2.5rem; padding-bottom: 3rem; }
+h1 { font-size: 1.9rem; letter-spacing: -.5px; margin: 0 0 .5rem; }
+h2 { font-size: 1.15rem; margin: 2.25rem 0 .5rem; }
+p, li { color: var(--text-muted); }
+pre, code { font: .9rem/1.6 var(--mono); }
+code { color: var(--code); }
+pre { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 6px; padding: .875rem 1rem; overflow-x: auto; }
+pre code { color: var(--text); white-space: pre; }
 .command { position: relative; }
 .command pre { padding-right: 4.5rem; }
-.copy { position: absolute; top: .5rem; right: .5rem; font: 12px system-ui, sans-serif; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 3px 10px; cursor: pointer; }
-.copy:hover, .copy[data-state="copied"] { border-color: var(--link); color: var(--link); }
-code.fpr { overflow-wrap: anywhere; color: var(--fg); }
+.copy { position: absolute; top: 8px; right: 8px; font: 12px system-ui, sans-serif; color: var(--code); background: var(--surface-accent); border: 1px solid var(--line-accent); border-radius: 4px; padding: 3px 10px; cursor: pointer; }
+.copy:hover { background: #2a4a39; }
+.copy:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 2px; }
+.copy[data-state="copied"] { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+.copy[data-state="failed"] { color: #f2b8b5; border-color: #a0524d; }
+code.fpr { overflow-wrap: anywhere; color: var(--text); font-size: .95rem; }
+@media (max-width: 800px) { .command pre { padding-top: 44px; padding-right: 1rem; } }
 </style>
 </head>
 <body>
+<header><a href="../" aria-label="platmon home"><img class="logo" src="../assets/platmon-logo-dark.svg" alt="platmon"></a><a href="../install/">← Install platmon</a></header>
 <main>
 <h1>platmon APT repository</h1>
-<p>Signed APT repository for the <a href="https://github.com/platmon/platmon">platmon</a> Debian package. It holds the same <code>.deb</code> files as the <a href="https://github.com/platmon/platmon/releases">GitHub releases</a>; platmon-hub is installed from PyPI.</p>
+<p>Signed APT repository for the <a href="https://github.com/platmon/platmon">platmon</a> Debian packages: <code>platmon</code>, the service, and <code>platmon-frontend</code>, the web page, the <code>platmon</code> command and the tray, which apt installs with it. It holds the same <code>.deb</code> files as the <a href="https://github.com/platmon/platmon/releases">GitHub releases</a>; platmon-hub is installed from PyPI.</p>
 
 <h2>Install</h2>
 <pre><code>sudo install -d -m 0755 /etc/apt/keyrings
